@@ -51,3 +51,4 @@ gem "font-awesome-rails"
 gem 'simple_form'
 #gem 'devise'
 gem 'devise', '~> 3.4.0'
+gem 'gravatarify', '~> 3.0.0'
