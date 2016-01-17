@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
         format.html { redirect_to place_path(@review.place), notice: 'Review was successfully created.' }
       else
         # no "new" to render at this point.
-        redirect_to place_path(@review.place), notice: "Something went wrong"
+        format.hmtl { redirect_to place_path(@review.place), notice: "Something went wrong"}
       end
     end
   end
@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
       if @review.update(review_params)
         format.html { redirect_to place_path(@review.place), notice: 'Review was successfully updated.' }
       else
-        redirect_to place_path(@review.place), notice: "Something went wrong"
+        format.hmtl { redirect_to place_path(@review.place), notice: "Something went wrong"}
       end
     end
   end
@@ -45,6 +45,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:place_id, :content)
+      params.require(:review).permit(:place_id, :content, :score)
     end
 end

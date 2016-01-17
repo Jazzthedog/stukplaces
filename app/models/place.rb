@@ -10,4 +10,12 @@ class Place < ActiveRecord::Base
 
   geocoded_by :address
   after_validation :geocode  
+
+  # reference another model here!!!
+  def average_rating
+  #   reviews.sum(:score) / reviews.size
+  # rescue ZeroDivisionError
+    0
+   end
+
 end
