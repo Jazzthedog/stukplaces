@@ -13,9 +13,9 @@ class Place < ActiveRecord::Base
 
   # reference another model here!!!
   def average_rating
-  #   reviews.sum(:score) / reviews.size
-  # rescue ZeroDivisionError
+    reviews.sum(:score) / reviews.size
+  rescue ZeroDivisionError
     0
-   end
+  end
 
 end

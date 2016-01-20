@@ -4,10 +4,11 @@ class Review < ActiveRecord::Base
   validates_presence_of :content
   validates_presence_of :score
 
-  # after_save :save_score
+  after_save :calculate_average
 
-  # def save_score
-  #   a = self.place.average_rating
-  #   self.place.update_attributes(average_rating: a)
-  # end  
+  def calculate_average
+    a = self.place.average_rating
+    self.place.update_attributes(total_average_rating: a)
+  end  
+
 end
