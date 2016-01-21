@@ -6,9 +6,9 @@ class Place < ActiveRecord::Base
   validates_presence_of :user_id
 
   belongs_to :user  
-  has_many :reviews, dependent: :destroy
+  has_many   :reviews, dependent: :destroy
 
-  geocoded_by :address
+  geocoded_by      :address
   after_validation :geocode  
 
   # reference another model here!!!
@@ -16,6 +16,14 @@ class Place < ActiveRecord::Base
     reviews.sum(:score) / reviews.size
   rescue ZeroDivisionError
     0
+  end
+
+  def self.search(search)
+    if search
+      where(['name LIKE ? OR address LIKE ?', "%#{search}%", "%#{search}%"])
+    else
+      all
+    end
   end
 
 end
